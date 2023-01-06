@@ -1,4 +1,10 @@
 terraform {
+  backend "s3" {
+    bucket = "tfbucket-rob"
+    key = "./terraform.tfstate"
+    region = "us-west-2"
+    dynamodb_table = "tf-state-locking"
+  }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
